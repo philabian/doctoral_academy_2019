@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var highTemp: UILabel!
     @IBOutlet weak var lowTemp: UILabel!
     
+    var finalZip = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +26,7 @@ class ViewController: UIViewController {
     @IBAction func submitButtonAction(_ sender: Any) {
        
         if let zip = zipCodeTextField.text {
+            finalZip = zip
             Repository().getWeatherData(cityZip: zip){weatherData in
                 
                 let weatherRoot = weatherData["weather"] as? [Any]
@@ -48,5 +51,15 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func navToFiveDayForecast(_ sender: Any) {
+        self.performSegue(withIdentifier: "showHourlyWeatherVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showHourlyWeatherVC"){
+            let hourlyVC = segue.destination as! HourlyWeatherTableViewController
+            hourlyVC.zip = finalZip
+        }
+    }
 }
 

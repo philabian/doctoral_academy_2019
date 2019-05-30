@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC47003322A02A7100BB228D /* HourlyWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47003222A02A7100BB228D /* HourlyWeatherTableViewController.swift */; };
 		FCD1DC7E2295E0C0000782A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1DC7D2295E0C0000782A8 /* AppDelegate.swift */; };
 		FCD1DC802295E0C0000782A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1DC7F2295E0C0000782A8 /* ViewController.swift */; };
 		FCD1DC832295E0C0000782A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD1DC812295E0C0000782A8 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC47003222A02A7100BB228D /* HourlyWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherTableViewController.swift; sourceTree = "<group>"; };
 		FCD1DC7A2295E0C0000782A8 /* Networking App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Networking App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCD1DC7D2295E0C0000782A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCD1DC7F2295E0C0000782A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				FCD1DCAB2296D16B000782A8 /* Repository */,
 				FCD1DC7D2295E0C0000782A8 /* AppDelegate.swift */,
 				FCD1DC7F2295E0C0000782A8 /* ViewController.swift */,
+				FC47003222A02A7100BB228D /* HourlyWeatherTableViewController.swift */,
 				FCD1DC812295E0C0000782A8 /* Main.storyboard */,
 				FCD1DC842295E0C2000782A8 /* Assets.xcassets */,
 				FCD1DC862295E0C2000782A8 /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				FCD1DC802295E0C0000782A8 /* ViewController.swift in Sources */,
 				FCD1DC7E2295E0C0000782A8 /* AppDelegate.swift in Sources */,
 				FCD1DCAD2296D192000782A8 /* Repository.swift in Sources */,
+				FC47003322A02A7100BB228D /* HourlyWeatherTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
