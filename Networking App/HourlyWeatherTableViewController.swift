@@ -10,9 +10,8 @@ import UIKit
 
 class DayWeatherTableViewCell: UITableViewCell{
     @IBOutlet weak var dayTemp: UILabel!
-    @IBOutlet weak var dayHighTemp: UILabel!
-    @IBOutlet weak var dayLowTemp: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var weatherStatusIcon: UIImageView!
     
 }
 
@@ -45,7 +44,6 @@ class HourlyWeatherTableViewController: UITableViewController {
                     }
                 }
                 self.tableView.reloadData()
-                var t = ""
             }
             
         }
@@ -64,7 +62,7 @@ class HourlyWeatherTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 100
     }
 
     
@@ -73,14 +71,20 @@ class HourlyWeatherTableViewController: UITableViewController {
         
         let mainData = self.allWeatherList[indexPath.row] as? [String: Any]
         let main = mainData!["main"] as? [String: Double]
+        let weather = mainData!["weather"] as? [Any]
+        let weahterData = weather?.first as? [String: Any]
+        
+        if let weatherStatusIcon = weahterData!["icon"] as? String {
+            Repository().getWeatherImg(imgStr: weatherStatusIcon){ imgData in
+                let img = UIImage(data: imgData)
+                cell.weatherStatusIcon.image = img
+            }
+        }
         
         if let date = mainData!["dt_txt"] as? String {
             let dateStr = self.formatDate(dateIn: date, isUI: true)
             cell.date.text = dateStr
         }
-        
-        cell.dayHighTemp.text = String(format:"%.0f", main!["temp_max"]!)
-        cell.dayLowTemp.text = String(format:"%.0f", main!["temp_min"]!)
         cell.dayTemp.text = String(format:"%.0f", main!["temp"]!)
         
         
@@ -90,7 +94,7 @@ class HourlyWeatherTableViewController: UITableViewController {
     func formatDate(dateIn: String, isUI: Bool) -> String{
         var dateStr = ""
         let dateFormatter = DateFormatter()
-        //incoming format "2017-08-08T20:47:37+00:00"
+        //incoming format "2017-08-08 20:47:37"
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         let exp_date = dateFormatter.date(from: dateIn)
