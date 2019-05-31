@@ -76,7 +76,7 @@ class HourlyWeatherTableViewController: UITableViewController {
         
         if let date = mainData!["dt_txt"] as? String {
             let dateStr = self.formatDate(dateIn: date)
-            //cell.date.text = dateStr
+            cell.date.text = dateStr
         }
         
         cell.dayHighTemp.text = String(format:"%.0f", main!["temp_max"]!)
