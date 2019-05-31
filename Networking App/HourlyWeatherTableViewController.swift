@@ -33,7 +33,7 @@ class HourlyWeatherTableViewController: UITableViewController {
                 for forecastData in weatherList {
                     var data = forecastData as? [String: Any]
                     if let tempDate = data!["dt_txt"] as? String {
-                        let dateStr = self.formatDate(dateIn: tempDate)
+                        let dateStr = self.formatDate(dateIn: tempDate, isUI: false)
                         
                         if(self.date != dateStr){
                             self.date = dateStr
@@ -75,7 +75,7 @@ class HourlyWeatherTableViewController: UITableViewController {
         let main = mainData!["main"] as? [String: Double]
         
         if let date = mainData!["dt_txt"] as? String {
-            let dateStr = self.formatDate(dateIn: date)
+            let dateStr = self.formatDate(dateIn: date, isUI: true)
             cell.date.text = dateStr
         }
         
@@ -87,7 +87,7 @@ class HourlyWeatherTableViewController: UITableViewController {
         return cell
     }
     
-    func formatDate(dateIn: String) -> String{
+    func formatDate(dateIn: String, isUI: Bool) -> String{
         var dateStr = ""
         let dateFormatter = DateFormatter()
         //incoming format "2017-08-08T20:47:37+00:00"
@@ -95,8 +95,11 @@ class HourlyWeatherTableViewController: UITableViewController {
         
         let exp_date = dateFormatter.date(from: dateIn)
         if (exp_date != nil) {
-            // desired format "Tue Aug 08 2017 16:47:37 GMT-0400 (EDT)"
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if(isUI){
+                dateFormatter.dateFormat = "E MMM d"
+            }else{
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+            }
             dateStr = dateFormatter.string(from:exp_date!)
         }
         
